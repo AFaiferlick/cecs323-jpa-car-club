@@ -81,7 +81,13 @@ public class CarClub {
       owners.add(new Owners("Leck", "Carl", "714-321-3729"));
       owners.add(new Owners("Guitierez", "Luis", "562-982-2899"));
       // Create the list of owners in the database.
-      carclub.createEntity (owners);
+      carclub.createEntity(owners);
+
+      List<Cars> cars = new ArrayList<>();
+      cars.add(new Cars("012345", "Hyundai", "Sonata", 2013 ));
+      cars.add(new Cars("54321", "Toyota", "Tacoma", 2018));
+      cars.add(new Cars("051432", "Ferrari", "F8 Tributo", 2022));
+      carclub.createEntity(cars);
 
       // Commit the changes so that the new data persists and is visible to other users.
       tx.commit();

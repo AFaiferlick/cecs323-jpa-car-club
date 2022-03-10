@@ -28,14 +28,16 @@ public class Cars {
     private int model_year;
 
     @ManyToOne
-    private Owners owner;
-
-    @JoinColumn()
+    @JoinColumn(name = "auto_body_style_name", referencedColumnName = "name", nullable = false)
+    private auto_body_styles auto_body_styles;
 
     @ManyToOne
-    private auto_body_styles auto_body_style;
+    @JoinColumn(name = "owner_id", nullable = false)
+    private Owners owner;
 
     public Cars (String VIN, String manufacturer, String model, int model_year) {
+        this.setOwner(owner);
+        this.setAuto_body_style(auto_body_styles);
         this.setVIN(VIN);
         this.setManufacturer(manufacturer);
         this.setModel(model);
@@ -64,9 +66,9 @@ public class Cars {
 
     public void setOwner(Owners owner) { this.owner = owner; }
 
-    public auto_body_styles getAuto_body_style() { return auto_body_style; }
+    public auto_body_styles getAuto_body_style() { return auto_body_styles; }
 
-    public void setAuto_body_style(auto_body_styles auto_body_style) { this.auto_body_style = auto_body_style; }
+    public void setAuto_body_style(auto_body_styles auto_body_style) { this.auto_body_styles = auto_body_style; }
 
     @Override
     public String toString () {
